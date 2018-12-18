@@ -1,0 +1,43 @@
+<!doctype html>
+<html id="app">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<meta name="description" content="链活活力攻略">
+		<title>
+			{{ title }}
+		</title>
+		<style>
+			body {
+				margin: 0;
+			}
+			
+			#msgbox::-webkit-scrollbar {
+				display: none;
+			}
+		</style>
+		<script type="text/javascript">
+			(function() {
+				var newRem = function() {
+					var html = document.documentElement;
+					html.style.fontSize = html.getBoundingClientRect().width / 37.5 + 'px';
+				};
+				window.addEventListener('resize', newRem, false);
+				newRem();
+			})();
+		</script>
+	</head>
+
+	<body>
+
+		<div id="msgbox">
+			<img src="../../public/images/hlstrategy_02.png" alt="" style="width:100%;" />
+			<img src="../../public/images/hlstrategy_03.png" alt="" style="width:100%;" />
+		</div>
+	</body>
+
+</html>

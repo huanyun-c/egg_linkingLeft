@@ -1,0 +1,323 @@
+@charset "utf-8";
+html,body {
+	height:100%;
+	overflow: auto;
+  background-color: #ffd744;
+}
+#wrap {
+  margin-top: -0.01333333rem;
+  height: auto;
+  background-image: url("../images/turntable/big_bg.png");
+  background-repeat: no-repeat;
+  background-size:100%;
+}
+.caidai {
+  position: absolute;
+  width: 100%;
+  height: 13.65333333rem;
+  background-image: url("../images/turntable/caidai.png");
+}
+.header {
+  padding:0.49333333rem 0.49333333rem 0 0.49333333rem;
+}
+.rule,
+.my {
+  position: relative;
+  z-index: 1;
+  width: 1.2rem;
+  height: 0.66666667rem;
+  border: 1px solid #d89720;
+  font-size: 0.32rem;
+  line-height: 0.65333333rem;
+  text-align: center;
+  color: #d89720;
+  border-radius: 0.06666667rem;
+}
+.my {
+  width: 1.6rem;
+}
+.title {
+  width: 8.52rem;
+  height: 4.21333333rem;
+  margin: auto;
+  background-image: url("../images/turntable/turntable_hlg.png");
+}
+/*轮盘*/
+.rotate {
+  position: relative;
+  width: 100%;
+  height: 9.86666667rem;
+}
+.lunpai {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 9.86666667rem;
+  height: 9.86666667rem;
+  margin-left: -4.92666667rem;
+  background-image: url("../images/turntable/circle_new.png");
+}
+.ring {
+  position: absolute;
+  left: 50%;
+  top: 0.34666667rem;
+  width: 8.22666667rem;
+  height: 8.22666667rem;
+  margin-left: -4.08rem;
+  background-image: url("../images/turntable/dark.png");
+}
+.rotate div.light {
+  background-image: url("../images/turntable/light.png");
+}
+#btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2.13333333rem;
+  height: 2.64rem;
+  margin: -2.1rem 0 0 -0.999995rem;
+  background-image: url("../images/turntable/button.png");
+}
+/*奖品*/
+.prize {
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -4.4rem 0 0 -3.86666667rem;
+  width: 7.73333333rem;
+  height: 7.73333333rem;
+  border-radius: 50%;
+}
+.running {
+  -o-animation: init 90s linear infinite;
+  -ms-animation: init 90s linear infinite;
+  -moz-animation: init 90s linear infinite;
+  -webkit-animation: init 90s linear infinite;
+  animation: init 90s linear infinite;
+}
+@keyframes init {
+  100% {
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.prize li {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 3.86666667rem;
+  background: no-repeat center 35%;
+  font-size: 0.32rem;
+  font-weight: bold;
+  line-height: 0.8rem;
+  text-align: center;
+  color: #f44747;
+  -moz-transform-origin: center bottom;
+  -webkit-transform-origin: center bottom;
+  -o-transform-origin: center bottom;
+  -ms-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+.prize li:nth-child(1) {
+  background-image: url("../images/turntable/hlg.png");
+  background-size: 0.72rem 0.88rem;
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.prize li:nth-child(2) {
+  background-image: url("../images/turntable/hlg.png");
+  background-size: 0.72rem 0.88rem;
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.prize li:nth-child(3) {
+  background-image: url("../images/turntable/hlg.png");
+  background-size: 0.72rem 0.88rem;
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.prize li:nth-child(4) {
+  background-image: url("../images/turntable/hlg.png");
+  background-size: 0.72rem 0.88rem;
+  -o-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.prize li:nth-child(5) {
+  background-image: url("../images/turntable/hlg.png");
+  background-size: 0.72rem 0.88rem;
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.prize li:nth-child(6) {
+  background-image: url("../images/turntable/hlg.png");
+  background-size: 0.72rem 0.88rem;
+  -o-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  -moz-transform: rotate(225deg);
+  -webkit-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+.prize li:nth-child(7) {
+  background-image: url("../images/turntable/hlg.png");
+  background-size: 0.72rem 0.88rem;
+  -o-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.prize li:nth-child(8) {
+  background-image: url("../images/turntable/hlg.png");
+  background-size: 0.72rem 0.88rem;
+  -o-transform: rotate(315deg);
+  -ms-transform: rotate(315deg);
+  -moz-transform: rotate(315deg);
+  -webkit-transform: rotate(315deg);
+  transform: rotate(315deg);
+}
+
+.prize li span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-left: -50%;
+  border-right: 2px solid #9d47f4;
+  -o-transform-origin: right bottom;
+  -ms-transform-origin: right bottom;
+  -moz-transform-origin: right bottom;
+  -webkit-transform-origin: right bottom;
+  transform-origin: right bottom;
+  -o-transform: rotate(70deg) skewY(30deg);
+  -ms-transform: rotate(70deg) skewY(30deg);
+  -moz-transform: rotate(70deg) skewY(30deg);
+  -webkit-transform: rotate(70deg) skewY(30deg);
+  transform: rotate(70deg) skewY(30deg);
+}
+.prize li p {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  width: 50%;
+  height: 60%;
+  padding-top: 0.26666667rem;
+  text-align: center;
+  line-height: 0.33333333rem;
+}
+/*次数*/
+.border {
+  width: 8rem;
+  height: 0.84rem;
+	/*margin:auto;*/
+  margin: 0.13333333rem auto 0.33333333rem;
+  /*background-image: url("../images/border.png");*/
+  font-size: 0.32rem;
+  line-height: 0.84rem;
+  text-align: center;
+  color: #fff;
+}
+.scroll {
+  width: 7.33333333rem;
+  height: 2.33333333rem;
+  margin: auto;
+  padding-bottom: 1.5rem;
+}
+.scroll p {
+  width: 4.76rem;
+  height: 0.79333333rem;
+  margin: auto;
+  background-image: url("../images/turntable/list.png");
+}
+.scroll div {
+  width: 100%;
+  height: 2.06666667rem;
+  margin-top: 0.26666667rem;
+  padding: 0.26666667rem 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 0.13333333rem;
+}
+.scroll ul {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.scroll ul li {
+  position: relative;
+  top: 0;
+  text-align: left;
+  font-size: 0.29333333rem;
+  line-height: 0.53333333rem;
+  color: #fff;
+  padding:0 0.5rem;  
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+/*规则背景*/
+#mask-rule .box-rule {
+  background-color: #fe5c51;
+}
+#mask-rule .box-rule .star {
+    background: inherit;
+    background-image: url('../images/turntable/star2.png');
+    background-color: transparent;
+}
+
+.luckbox {
+	background: rgba(255,255,255,.2);
+	height:0.6rem;
+	line-height: 0.6rem;
+	margin:0 1.5rem 0.15rem;
+	border-radius: 0.2rem;	
+	/*//width:100%;*/
+	overflow: auto;
+}
+.luck_ul {	
+	display: flex;
+	width:550%;
+	overflow: auto;
+	-o-animation: luck 30s linear infinite;
+  	-ms-animation: luck 30s linear infinite;
+  	-moz-animation: luck 30s linear infinite;
+  	-webkit-animation: luck 30s linear infinite;
+  	animation: luck 30s linear infinite;
+}
+@keyframes luck {
+	0% {    
+    transform: translatex(0);
+  }
+	
+  100% {    
+    transform: translateX(-850px);
+  }
+}
+.luck_span {
+	display: inline-block;	
+	padding:0 0.3rem;
+	color:gold;
+	
+}
+

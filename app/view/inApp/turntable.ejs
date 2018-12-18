@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>{{ title }}</title>
+		<link rel="stylesheet" href="../../public/stylesheets/common_mobile.css">
+		<link rel="stylesheet" href="../../public/stylesheets/turntable.css">
+		<!-- 移动端适配 -->
+		<script>
+			var html = document.querySelector('html');
+			changeRem();
+			window.addEventListener('resize', changeRem);
+
+			function changeRem() {
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 10 + 'px';
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<!-- <div class="caidai"></div>-->
+			<div class="header clearfix">
+				<p class="rule fl">规则</p>
+				<a href="" id="myWin">
+					<p class="my fr">我的奖品</p>
+				</a>
+				<div class="title"></div>
+			</div>
+			<div class="luckbox">
+				<ul class="luck_ul">
+					{% for item in lucklyList %}
+					<span class="luck_span">恭喜{{item.person}}获得{{item.gift}}一份</span> {% endfor %}
+				</ul>
+			</div>
+			<!--轮盘-->
+			<div class="rotate">
+				<div class="lunpai">
+					<ul class="prize running">
+						<li>
+							<span></span>
+							<p>iPhoneX</p>
+						</li>
+						<li>
+							<span></span>
+							<p>1元红包</p>
+						</li>
+						<li>
+							<span></span>
+							<p>10个活力果</p>
+						</li>
+						<li>
+							<span></span>
+							<p>80元红包</p>
+						</li>
+						<li>
+							<span></span>
+							<p>5个活力果</p>
+						</li>
+						<li>
+							<span></span>
+							<p>10元红包</p>
+						</li>
+						<li>
+							<span></span>
+							<p>8元红包</p>
+						</li>
+						<li>
+							<span></span>
+							<p>100个活力果</p>
+						</li>
+						<li>
+							<span></span>
+							<p>5元红包</p>
+						</li>
+
+					</ul>
+				</div>
+				<div class="ring"></div>
+				<div id="btn"></div>
+			</div>
+			<div class="border">
+				您还有 <span id="change">{{ personVitality }}</span>活力果可抽奖，<span style="color:red;">每次抽奖消耗一个</span>
+			</div>
+			<!--<div class="border">
+        
+    </div>-->
+			<!--滚动信息-->
+			<div class="scroll">
+				<p></p>
+				<div>
+					<ul class="personList">
+						{% for item in giftList %}
+						<li class="gift">
+							恭喜<span class="start-num">{{item.phone}}</span> 获得
+							<span class="info">{{item.gift}}</span><span>{{item.unit}}</span>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<!--游戏规则弹窗-->
+			<div id="mask-rule">
+				<div class="box-rule">
+					<span class="star"></span>
+					<h2>活动规则说明</h2>
+					<span id="close-rule"></span>
+					<div class="con">
+						<div class="text">
+							<p>1.本活动长期有效，参与抽奖每次消耗1个活力果，无次数限制；</p>
+							<p>2.抽中的现金红包直接发放至用户账户余额，活力果和活力树券直接发放至用户活力口袋和活力果园；</p>
+							<p>3.本活动公平公正公开，如恶意刷奖，一经发现将取消抽奖资格，之前抽中的所有奖品均视为无效；</p>
+							<p>4.参与抽奖过程中遇到任何疑问请联系客服：0797-2131415；</p>
+							<p>5.本活动最终解释权归链活团队所有。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--中奖提示-->
+			<div id="mask">
+				<div class="blin"></div>
+				<div class="caidai"></div>
+				<div class="winning">
+					<div class="red-head"></div>
+					<div class="red-body"></div>
+					<div id="card">
+						<a href="javascript:;" target="_self" class="win"></a>
+					</div>
+					<a href="javascript:;" target="_self" class="btn"></a>
+					<span id="close"></span>
+				</div>
+			</div>
+		</div>
+		<div style="position: fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.9);width:100%;height:100%;" id="main">
+			<div class="main">
+				<div class="loading">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<p class="loading" style="color:#fff;font-size:0.4rem;margin-top:0.8rem;">努力加载中</p>
+				<!--<p class="loading" style="color:#fff;font-size:0.8rem;margin-top:0.8rem;">系统修复中，待开启。。</p>-->
+			</div>
+
+		</div>
+
+		<div id="alertBox" style="display: none;">
+    		
+    	</div>
+		<audio src="../../public/audio/3394.mp3" id="audio"></audio>
+
+		<script src="../../public/javascripts/jquery.min.js"></script>
+		<script src="../../public/javascripts/jquery.rotate.js"></script>
+		<script src="../../public/javascripts/h5_game_common.js?version=1.0.0"></script>
+		<script src="../../public/javascripts/turntable.js"></script>
+		<script src="../../public/javascripts/md5.js"></script>
+		<script src="https://cdn.bootcss.com/jsencrypt/3.0.0-beta.1/jsencrypt.min.js"></script>
+	</body>
+
+</html>

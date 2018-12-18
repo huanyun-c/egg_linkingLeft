@@ -1,0 +1,51 @@
+{
+  "name": "lhApp",
+  "version": "1.0.0",
+  "description": "链活node端后台项目",
+  "private": true,
+  "dependencies": {
+    "egg": "^2.2.1",
+    "egg-alinode": "^2.0.1",
+    "egg-cors": "^2.1.1",
+    "egg-mysql": "^3.0.0",
+    "egg-scripts": "^2.10.0",
+    "egg-view-nunjucks": "^2.2.0",
+    "ethereumjs-tx": "^1.3.7",
+    "node-rsa": "^1.0.1",
+    "web3": "^1.0.0-beta.36"
+  },
+  "devDependencies": {
+    "autod": "^3.0.1",
+    "autod-egg": "^1.0.0",
+    "egg-bin": "^4.3.5",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.14.0",
+    "eslint": "^4.11.0",
+    "eslint-config-egg": "^6.0.0",
+    "webstorm-disable-index": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=egg-server-lhApp",
+    "stop": "egg-scripts stop --title=egg-server-lhApp",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "ci": {
+    "version": "8"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "huanyun_c",
+  "license": "MIT"
+}

@@ -1,0 +1,143 @@
+<!doctype html>
+<html class="no-js">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{{title}}</title>
+
+		<!-- Set render engine for 360 browser -->
+		<meta name="renderer" content="webkit">
+
+		<!-- No Baidu Siteapp-->
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+		<!-- Add to homescreen for Chrome on Android -->
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<!-- Add to homescreen for Safari on iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+
+		<!-- Tile icon for Win8 (144x144 + tile color) -->
+		<meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+		<meta name="msapplication-TileColor" content="#0e90d2">
+
+		<link rel="stylesheet" href="../../public/stylesheets/amazeui.min.css">
+		<style>
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			ul {
+				padding: 0 2rem;
+			}
+			a {
+				display: block;
+				text-decoration: none;
+			}
+			.game_li {
+				
+				border-radius: 1rem;
+				
+				width:100%;
+				/*height: 11rem;*/
+				margin: 1rem 0;
+			}
+			.game_li img {
+				width:100%;
+				display: block;
+			}
+			/*.game_li_1 {
+				background-image: url('../../public/images/turntable_1.png');
+			}
+			
+			.game_li_2 {
+				background-image: url('../../public/images/turntable_2.png');
+			}
+			
+			.game_li_3 {
+				background-image: url('../../public/images/turntable_3.png');
+				background-position: center;
+				background-size: 100%;
+			}*/
+			
+			.li_bg {
+				/*background: rgba(20, 20, 20, 0.4);*/
+				position: absolute;
+				z-index: 100;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				border-radius: 1rem;
+				padding: 1rem 0 1rem 3rem;
+			}
+			
+			.li_bg h3 {
+				margin: 0;
+				height: 4rem;
+				line-height: 4rem;
+			}
+			
+			.li_bg p {
+				color: #fff;
+				margin: 0;
+				height: 3rem;
+				line-height: 3rem;
+			}
+			
+			.font10 {
+				font-size: 1rem;
+			}
+			
+			.font16 {
+				font-size: 1.6rem;
+				color: #fff;
+			}
+			
+			.font14 {
+				font-size: 1.4rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<ul>
+				<a href="/turntable">
+					<li class="game_li game_li_1">
+						<img src="../../public/images/turntable_1.png" alt="" />
+					</li>
+				</a>
+				<a href="/turntableHlg">
+					<li class="game_li game_li_2">
+						<img src="../../public/images/turntable_2.png" alt="" />
+					</li>
+				</a>
+				<a href="/guessGame">
+					<li class="game_li game_li_3">
+						<img src="../../public/images/turntable_3.png" alt="" />
+					</li>
+				</a>
+
+			</ul>
+			<p style="text-align: center;font-size:1.2rem;color:#666;">更多娱乐敬请期待</p>
+			<div>
+
+				<!--[if (gte IE 9)|!(IE)]><!-->
+				<script src="../../public/javascripts/jquery.min.js"></script>
+				<!--<![endif]-->
+				<!--[if lte IE 8 ]>
+	<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+	<script src="../javascripts/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+	</body>
+
+</html>

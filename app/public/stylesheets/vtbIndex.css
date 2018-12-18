@@ -1,0 +1,145 @@
+html,
+body {
+	height     : 100%;
+	overflow   : auto;
+	background : #F5F5F5;
+	font-family: "微软雅黑", sans-serif;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.6rem;
+}
+ul,li {
+	list-style: none;
+}
+.color333 {
+	color: #333;
+}
+.color666 {
+	color: #666;
+}
+.am-alert {
+	margin-bottom: 0;
+	padding      : 0.2rem;
+}
+.topMsg {
+	background   : #FFF;
+	width        : 90%;
+	height       : 25rem;
+	margin       : 0 auto;
+	margin-top   : 2rem;
+	padding      : 2rem;
+	border-radius: 1rem;
+	position     : relative;
+}
+.setBtn {
+	width   : 2rem;
+	height  : 2rem;
+	position: absolute;
+	right   : 0.5rem;
+	top     : 0.5rem;
+}
+.hlg_img {
+	width        : 5rem;
+	height       : 5rem;
+	border-radius: 50%;
+	display      : block;
+	margin       : 0 auto;
+}
+
+.hlg_num {
+	margin    : 1rem 0 1rem 0;
+	text-align: center;
+}
+
+.hlg_accountBox {
+	display: -moz-box;
+	/* Firefox */
+	display: -ms-flexbox;
+	/* IE10 */
+	display: -webkit-box;
+	/* Safari */
+	display: -webkit-flex;
+	/* Chrome, WebKit */
+	display: box;
+	display: flexbox;
+	display: flex;
+}
+
+.account {
+	width        : 70%;
+	overflow     : hidden;
+	white-space  : nowrap;
+	text-overflow: ellipsis;
+	margin       : 0;
+	color        : #999;
+}
+.hlg_lable {
+	color: #222;
+}
+
+.btn_box {
+	width : 90%;
+	margin: 0 auto;
+}
+.btn_group {
+	display: -moz-box;
+	/* Firefox */
+	display: -ms-flexbox;
+	/* IE10 */
+	display: -webkit-box;
+	/* Safari */
+	display: -webkit-flex;
+	/* Chrome, WebKit */
+	display   : box;
+	display   : flexbox;
+	display   : flex;
+	margin-top: 2rem;
+}
+.btn {
+	flex: 1;
+	
+	border : 0;
+	color  : #fff;
+	padding: 0.5rem 0;
+	outline: none;
+}
+.left_btn {
+	border-radius: 1rem 0 0 1rem;
+	margin-right : 0.5rem;
+	background   : #0081cc;
+}
+.right_btn {
+	border-radius: 0 1rem 1rem 0;
+	margin-left  : 0.5rem;
+	background   : #fdd000;
+}
+.hlg_msg {
+	width     : 90%;
+	margin    : 0 auto;
+	margin-top: 2rem;
+	color     : #666;
+	font-size : 1.2rem;
+}
+.hlg_msg p {
+	margin     : 0;
+	line-height: 1.6rem;
+}
+.am-offcanvas-bar{
+	width       : 50%;
+	background  : rgba(100,100,100,0.9);
+	border-right: 0 !important;
+}
+.left_list {
+	height       : 4rem;
+	line-height  : 4rem;
+	color        : #fff;
+	border-bottom: 1px solid #eee;
+}
+.am-offcanvas-bar:after {
+	background: none !important;
+}

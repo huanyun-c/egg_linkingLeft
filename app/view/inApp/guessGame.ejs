@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>{{title}}</title>
+		<link rel="stylesheet" href="../../public/stylesheets/common_mobile.css">
+		<link rel="stylesheet" href="../../public/stylesheets/guessGame.css">
+		<!-- 移动端适配 -->
+		<script>
+			var html = document.querySelector('html');
+			changeRem();
+			window.addEventListener('resize', changeRem);
+
+			function changeRem() {
+				var width = html.getBoundingClientRect().width;
+				html.style.fontSize = width / 10 + 'px';
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<p class="time">长期有效</p>
+			<!--星星-->
+			<div class="stars-box">
+				<span class="stars"></span>
+				<span class="stars"></span>
+				<span class="stars"></span>
+				<span class="stars"></span>
+				<span class="stars"></span>
+				<span class="stars"></span>
+				<span class="stars"></span>
+			</div>
+			<!--主体-->
+			<div class="main">
+				<a href="" id="myWin">
+					<p class="my"></p>
+				</a>
+				<!--游戏区域-->
+				<div class="box">
+					<span class="coin"></span>
+					<h2>全员竞猜<span id="NewbuyId">{{lastBuyId}}</span>期</h2>
+					<ul class="light clearfix">
+						<li class="fl">
+							<p></p>
+							<p class="blin"></p>
+							<p></p>
+							<p class="blin"></p>
+						</li>
+						<li class="fr">
+							<p class="blin"></p>
+							<p></p>
+							<p class="blin"></p>
+							<p></p>
+						</li>
+					</ul>
+					<!--九宫格-->
+					<ul class="play clearfix">
+						<li class="prize select" data-id='1'>
+							<div>
+								<p class="p1">1</p>
+								<p class="p2">点我点我</p>
+							</div>
+						</li>
+						<li class="prize" data-id='2'>
+							<div>
+								<p class="p1">2</p>
+								<p class="p2">点我点我</p>
+							</div>
+						</li>
+						<li class="prize" data-id='3'>
+							<div>
+								<p class="p1">3</p>
+								<p class="p2">点我点我</p>
+							</div>
+						</li>
+						<li class="prize" data-id='4'>
+							<div>
+								<p class="p1">4</p>
+								<p class="p2">点我点我</p>
+							</div>
+						</li>
+						<li class="prize" data-id='5'>
+							<div>
+								<p class="p1">5</p>
+								<p class="p2">点我点我</p>
+							</div>
+						</li>
+
+						<!--开始按钮-->
+						<li id="btn">
+							<p>点击转盘数字竞猜</p>
+							<p>距离开奖<span id="minute_show">00分</span>:<span id="second_show">00秒</span></p>
+						</li>
+						<!--开始按钮-->
+						<li class="prize" data-id='6'>
+							<div>
+								<p class="p1">6</p>
+								<p class="p2">点我点我</p>
+							</div>
+						</li>
+						<li class="prize" data-id='7'>
+							<div>
+								<p class="p1">7</p>
+								<p class="p2">点我点我</p>
+							</div>
+						</li>
+						<li class="prize" data-id='8'>
+							<div>
+								<p class="p1">8</p>
+								<p class="p2">点我点我</p>
+							</div>
+						</li>
+						<li class="prize" data-id='9'>
+							<div>
+								<p class="p1">9</p>
+								<p class="p2">点我点我</p>
+							</div>
+						</li>
+						<li class="prize" data-id='10'>
+							<div>
+								<p class="p1">10</p>
+								<p class="p2">点我点我</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!--9-25-->
+				<div class="bsBox">
+
+					<div class="bsLittleBox">
+						<h3 style="color:#fff;font-size:0.4rem;margin-left:0.2rem;">猜大小</h3>
+						<div style="display: flex;" class="bs">
+							<p class="bsBtn" data-id='14'>大</p>
+							<p class="bsBtn" data-id='13'>小</p>
+						</div>
+					</div>
+					<div>
+						<h3 style="color:#fff;font-size:0.4rem;margin-left:0.2rem;">猜单双</h3>
+						<div style="display: flex;" class="bs">
+							<p class="bsBtn" data-id='11'>单</p>
+							<p class="bsBtn" data-id='12'>双</p>
+						</div>
+					</div>
+
+				</div>
+				<!--9-25-->
+
+				<!--奖品展示-->
+				<div class="awards">
+					上期（第<span id="buyId">{{fontBuyId}}</span>期）幸运数字：<span id="luckly">{{fontNum}}</span>
+				</div>
+				
+				<div class="history">
+					<h3 style='font-size:0.4rem;'>前20期开奖记录</h3>
+					<div style="height:5rem;overflow: auto;">
+						<table style="width:100%;text-align: center;" class="table">
+							<tr class="th">
+								<th>期数</th>
+								<th>数字</th>
+								<th>大小</th>
+								<th>单双</th>
+							</tr>
+							{% for item in lastList %}
+							<tr>
+								<td>{{item.buy_id}}</td>
+								<td>{{item.luckly_number}}</td>
+								{% if item.big_small == 13 %}
+								<td>小</td>
+								{% elseif item.big_small == 14 %}
+								<td>大</td>
+								{% endif %}
+								{% if item.number_lable == 11 %}
+								<td>单</td>
+								{% elseif item.number_lable == 12 %}
+								<td>双</td>
+								{% endif %}												
+							</tr>
+							{% endfor %}
+						</table>
+					</div>
+					
+
+				</div>
+
+				<div class="rules">
+					<p>1.竞猜每5分钟产生一个幸运数字，开奖前1分钟不允许购买；</p>
+					<p>2.参与数字竞猜，消耗相应数量的活力果，中奖者获得9.5倍活力果收益；</p>
+					<p>3.参与单双大小竞猜，消耗相应数量的活力果，中奖者获得1.9倍活力果收益；</p>
+					<p>4.每个号码购买不允许超过100次；</p>
+					<p>5.本活动公平公正公开，如恶意刷奖，一经发现将取消竞猜资格，竞猜所得活力果均视为无效；</p>
+					<p>6.参与竞猜过程中遇到任何疑问请联系客服：0797-2131415；</p>
+					<p>7.本活动最终解释权归链活团队所有。</p>
+				</div>
+
+				<!--全屏遮罩-->
+				<div class="allAlert">		
+					系统升级，待开放
+				</div>
+
+			</div>
+
+			<div id="mask">
+				<div class="winning newWinning">
+					<div class="red-head win-redhead">
+						<h3 style="text-align: center;height:1.4rem;line-height:1.4rem;font-size:0.8rem;font-family:'微软雅黑'"><span id="thenumber">号码0</span></h3>
+						<p style="width:80%;margin:0 auto;height:1.4rem;line-height: 1.4rem;">
+							<span style="font-size:0.5rem;">购买数量:</span>
+							<input type="button" value="-" class="sub inputBtn" id="sub" />
+							<input type="number" value="1" class="input" min="1" id="input" style="color:#fff;" onchange="change(this.value)" />
+							<input type="button" value="+" class="plus inputBtn" id="plus" />
+						</p>
+						<p style="width:80%;margin:0 auto;height:1rem;line-height: 1rem;">花费<span id="count">1</span>VTB，中奖将获得<span id="countTotal">9.5</span>VTB</p>
+						<p class="buyBtn" id="buyBtn">确认购买</p>
+					</div>
+					<span id="close"></span>
+				</div>
+			</div>
+
+			<div id="mask1">
+				<div class="winning newWinning">
+					<div class="red-head win-redhead">
+						<h3 style="text-align: center;height:1.4rem;line-height:1.4rem;font-size:0.8rem;font-family:'微软雅黑'"><span id="thenumber1">大</span></h3>
+						<p style="width:80%;margin:0 auto;height:1.4rem;line-height: 1.4rem;">
+							<span style="font-size:0.5rem;">购买数量:</span>
+							<input type="button" value="-" class="sub inputBtn" id="sub1" />
+							<input type="number" value="5" readonly class="input" min="5" id="input1" style="color:#fff;" />
+							<input type="button" value="+" class="plus inputBtn" id="plus1" />
+						</p>
+						<p style="width:80%;margin:0 auto;height:1rem;line-height: 1rem;">花费<span id="count1">5</span>VTB，中奖将获得<span id="countTotal1">9.5</span>VTB</p>
+						<p class="buyBtn" id="buyBtn1">确认购买</p>
+					</div>
+					<span id="close1"></span>
+				</div>
+			</div>
+
+			<!--提示语-->
+			
+
+		</div>
+		
+		<div class="alertBox">
+			<div class="alert">
+				查询成功
+			</div>
+		</div>
+		
+		<script src="../../public/javascripts/jquery.min.js"></script>
+		<script src="../../public/javascripts/jquery.rotate.js"></script>
+		<script src="../../public/javascripts/h5_game_common.js?version=1.0.0"></script>
+		<script src="../../public/javascripts/bigTurn.js"></script>
+        <script src="../../public/javascripts/md5.js"></script>
+        <script src="../../public/javascripts/unitBase.js"></script>
+		<script src="https://cdn.bootcss.com/jsencrypt/3.0.0-beta.1/jsencrypt.min.js"></script>        
+	</body>
+
+</html>

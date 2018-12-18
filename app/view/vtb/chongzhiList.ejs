@@ -1,0 +1,75 @@
+<!doctype html>
+<html class="no-js">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{{title}}</title>
+
+		<!-- Set render engine for 360 browser -->
+		<meta name="renderer" content="webkit">
+
+		<!-- No Baidu Siteapp-->
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+		<!-- Add to homescreen for Chrome on Android -->
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<!-- Add to homescreen for Safari on iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+
+		<!-- Tile icon for Win8 (144x144 + tile color) -->
+		<meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+		<meta name="msapplication-TileColor" content="#0e90d2">
+
+		<link rel="stylesheet" href="../../public/stylesheets/amazeui.min.css">
+	</head>
+
+	<body>
+		<section data-am-widget="accordion" class="am-accordion am-accordion-gapped" data-am-accordion='{  }'>
+			{% if newRechargeList.length == 0 %}
+			<h5 style="text-align: center;">暂无充值记录</h5>
+			{% else %}
+			{% for item in newRechargeList %}
+			<dl class="am-accordion-item">
+				<dt class="am-accordion-title">
+                订单号：{{item.order}}
+        </dt>
+				<dd class="am-accordion-bd am-collapse">
+					<!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+                    <div class="am-accordion-content">
+                        <p>从谁：<span>{{item.from}}</span></p>
+                        <p>HASH:<a href="https://ropsten.etherscan.io/tx/{{item.hash}}">{{item.hash}}</a></p>
+                        <p>时间：<span>{{item.time}}</span></p>
+                        <p>金额：<span>{{item.account}}</span></p>	
+                        <p>状态：<span>{{item.status}}</span></p>
+					</div>
+				</dd>
+			</dl>
+			{% endfor %}
+			{% endif %}
+		</section>
+		<!--[if (gte IE 9)|!(IE)]><!-->
+		<script src="../../public/javascripts/jquery.min.js"></script>
+		<!--<![endif]-->
+		<!--[if lte IE 8 ]>
+			<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+			<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+			<script src="../javascripts/amazeui.ie8polyfill.min.js"></script>
+		<![endif]-->
+		<script src="../../public/javascripts/amazeui.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('.am-accordion-item').first().addClass('am-active');
+				$('.am-collapse').first().addClass('am-in');
+				
+			})
+		</script>
+	</body>
+
+</html>

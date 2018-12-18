@@ -1,0 +1,524 @@
+<!doctype html>
+<html class="no-js">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{{title}}</title>
+
+		<!-- Set render engine for 360 browser -->
+		<meta name="renderer" content="webkit">
+
+		<!-- No Baidu Siteapp-->
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+		<!-- Add to homescreen for Chrome on Android -->
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<!-- Add to homescreen for Safari on iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+
+		<!-- Tile icon for Win8 (144x144 + tile color) -->
+		<meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+		<meta name="msapplication-TileColor" content="#0e90d2">
+
+		<link rel="stylesheet" href="../../public/stylesheets/amazeui.min.css">
+		<link rel="stylesheet" href="../../public/stylesheets/vtbIndex.css">
+		<style>
+			.passContainer {
+				width: 100%;
+				height: 50px;
+				overflow: hidden;
+				padding: 0;
+				position: relative;
+			}
+			
+			.passwordBox {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				z-index: 1000;
+				display: flex;
+				background: #fff;
+				border: 1px solid #ccc;
+				border-radius: 16px;
+			}
+			
+			.passItem {
+				flex: 1;
+				height: 100%;
+				margin: 0;
+				box-sizing: border-box;
+				z-index: 1000;
+			}
+			
+			.passItem:not(:last-child) {
+				border-right: inherit;
+			}
+			
+			#password {
+				width: 100%;
+				height: 100%;
+				background-color: transparent;
+				background: transparent;
+				position: absolute;
+				left: 0;
+				border: none;
+				padding: 0 10px;
+				outline: none;
+				font-size: 40px;
+				font-family: "courier new", sans-serif;
+				letter-spacing: 1.3rem;
+				text-align: left;
+				text-overflow: hidden;
+				z-index: 10;
+			}
+			
+			.circleImg {
+				width: 100%;
+				height: 100%;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form action="" class="am-form" id="doc-vld-msg" style="position: fixed;top:0;width:100%;">
+			<fieldset>
+				<div class="am-form-group">
+					<label for="doc-vld-name-2-1">提现地址：</label>
+					<input type="text" id="doc-vld-name-2-1" data-validation-message="输入提现地址" placeholder="输入提现地址" required onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" />
+				</div>
+
+				<div class="am-form-group">
+					<label for="doc-vld-email-2-1">数量：<span style="color:#999;font-size:1rem;">（最小提现20VTB）</span></label>
+					<input type="number" id="doc-vld-email-2-1" data-validation-message="输入提现数量" placeholder="输入提现数量" required onchange="changeShiji(this)" />
+				</div>
+
+				<div class="am-form-group">
+					<label for="doc-vld-url-2-1">手续费：<span></span></label>
+					<input type="text" id="doc-vld-url-2-1" placeholder="手续费" readonly="readonly" value="0.5VTB" />
+				</div>
+
+				<div class="am-form-group">
+					<label for="doc-vld-age-2-1">到账数量：</label>
+					<input type="number" class="" id="doc-vld-age-2-1" placeholder="到账数量" readonly="readonly" />
+				</div>
+				<button class="am-btn am-btn-secondary" id="doc-prompt-toggle" type="button" style="background-color: #0081cc;border-color: #0081cc;">确认提现</button>
+			</fieldset>
+		</form>
+
+		<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+			<div class="am-modal-dialog">
+				<div class="am-modal-bd">
+					输入支付密码
+					<div class="passContainer" id="passContainer">
+						<input type="number" id="password" oninput="input(this)" />
+						<div class="passwordBox">
+							<div class="passItem">
+								<img src="../../public/images/circle.svg" alt="" class="circleImg" />
+							</div>
+							<div class="passItem">
+								<img src="../../public/images/circle.svg" alt="" class="circleImg" />
+							</div>
+							<div class="passItem">
+								<img src="../../public/images/circle.svg" alt="" class="circleImg" />
+							</div>
+							<div class="passItem">
+								<img src="../../public/images/circle.svg" alt="" class="circleImg" />
+							</div>
+							<div class="passItem">
+								<img src="../../public/images/circle.svg" alt="" class="circleImg" />
+							</div>
+							<div class="passItem">
+								<img src="../../public/images/circle.svg" alt="" class="circleImg" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="am-modal-footer">
+					<span class="am-modal-btn" data-am-modal-cancel>取消</span>
+					<span class="am-modal-btn" data-am-modal-confirm>确定</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+			<div class="am-modal-dialog">
+				<div class="am-modal-hd">提交成功！</div>
+				<div class="am-modal-bd">
+					交易正在进行，请稍等1分钟。。
+				</div>
+				<!--<div class="am-modal-footer">
+					<span class="am-modal-btn">确定</span>
+				</div>-->
+			</div>
+		</div>
+
+		<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert-tixian">
+			<div class="am-modal-dialog">
+				<div class="am-modal-bd" id="am-modal-msg">
+					提现成功
+				</div>
+			</div>
+		</div>
+		<!--在这里编写你的代码-->
+
+		<!--[if (gte IE 9)|!(IE)]><!-->
+		<script src="../../public/javascripts/jquery.min.js"></script>
+		<!--<![endif]-->
+		<!--[if lte IE 8 ]>
+		<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+		<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+		<![endif]-->
+		<script src="../../public/javascripts/amazeui.min.js"></script>
+		<script src="../../public/javascripts/md5.js"></script>
+		<script src="https://cdn.bootcss.com/jsencrypt/3.0.0-beta.1/jsencrypt.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				getNodeTime();
+				$('#doc-vld-msg').validator({
+					onValid: function(validity) {
+						$(validity.field).closest('.am-form-group').find('.am-alert').hide();
+					},
+
+					onInValid: function(validity) {
+						var $field = $(validity.field);
+						var $group = $field.closest('.am-form-group');
+						var $alert = $group.find('.am-alert');
+						// 使用自定义的提示信息 或 插件内置的提示信息
+						var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+
+						if(!$alert.length) {
+							$alert = $('<div class="am-alert am-alert-danger"></div>').hide().
+							appendTo($group);
+						}
+
+						$alert.html(msg).show();
+					}
+				});
+
+				$('#doc-prompt-toggle').on('click', function() {
+					let toAddress = $("#doc-vld-name-2-1").val();
+					let numValue = $('#doc-vld-email-2-1').val();
+					//获取密码
+					let psw = $("#password").val();
+					if(toAddress == "") {
+						$("#am-modal-msg").html('提现地址不能为空');
+						$('#my-alert-tixian').modal();
+	
+						setTimeout(function() {
+							$('#my-alert-tixian').modal('close');
+						}, 1000);
+	
+						return false
+					}
+	
+					if(numValue == "") {
+	
+						$("#am-modal-msg").html('提现数量不能为空');
+						$('#my-alert-tixian').modal();
+	
+						setTimeout(function() {
+							$('#my-alert-tixian').modal('close');
+						}, 1000);
+	
+						return false
+					}
+					let num = parseFloat(numValue);
+	
+					if(num < 20) {
+						$("#am-modal-msg").html('提现数量不少于20');
+						$('#my-alert-tixian').modal();
+	
+						setTimeout(function() {
+							$('#my-alert-tixian').modal('close');
+						}, 1000);
+	
+						return false
+	
+					}
+					$('#my-prompt').modal({
+						relatedTarget: this,
+						onConfirm: function(e) {
+							$('#my-prompt').modal('close');
+							//密码框隐藏
+							//加载中弹窗
+
+							$('#my-alert').modal();
+							//调用提现接口
+							setTimeout(function() {
+								vtbtixian();
+							}, 1000)
+							
+						},
+						onCancel: function(e) {
+							//清空密码
+							$('#password').val('');
+							$('.circleImg').css('display', "none");
+							$('#my-prompt').modal('close');
+						}
+					});
+				});
+				
+				$('#passContainer').on('click', function(ev){
+			       $("#password").focus();
+			    });
+
+			});
+
+			function getNodeTime() {
+				$.ajax({
+					type: "post",
+					url: "/publicKey",
+					async: false,
+					success: function(data) {
+						if(data.res == 200) {
+
+							let nowTime = data.data.nodeTime;
+							let personTime = new Date().getTime();
+							//当前服务器时间存缓存
+							localStorage.setItem("nowTime", nowTime);
+							//公钥存缓存
+							localStorage.setItem("publicKey", data.data.publicKey);
+							//存用户当前时间
+							localStorage.setItem("personTime", personTime);
+
+						}
+
+					},
+					error: function(error) {
+						console.error(error);
+					}
+				});
+			}
+
+			function vtbtixian() {
+				//前端验证
+				let toAddress = $("#doc-vld-name-2-1").val();
+				let numValue = $('#doc-vld-email-2-1').val();
+				//获取密码
+				let psw = $("#password").val();
+				if(toAddress == "") {
+					$("#am-modal-msg").html('提现地址不能为空');
+					$('#my-alert-tixian').modal();
+
+					setTimeout(function() {
+						$('#my-alert-tixian').modal('close');
+					}, 1000);
+
+					return false
+				}
+
+				if(numValue == "") {
+
+					$("#am-modal-msg").html('提现数量不能为空');
+					$('#my-alert-tixian').modal();
+
+					setTimeout(function() {
+						$('#my-alert-tixian').modal('close');
+					}, 1000);
+
+					return false
+				}
+				let num = parseFloat(numValue);
+
+				if(num < 20) {
+					$("#am-modal-msg").html('提现数量不少于20');
+					$('#my-alert-tixian').modal();
+
+					setTimeout(function() {
+						$('#my-alert-tixian').modal('close');
+					}, 1000);
+
+					return false
+
+				}
+
+				if(psw == '') {
+					$("#am-modal-msg").html('密码不能为空');
+					$('#my-alert-tixian').modal();
+
+					setTimeout(function() {
+						$('#my-alert-tixian').modal('close');
+					}, 1000);
+
+					return false
+
+				}
+
+				if(psw.length != 6) {
+					$("#am-modal-msg").html('请输入6位数字的密码');
+					$('#my-alert-tixian').modal();
+
+					setTimeout(function() {
+						$('#my-alert-tixian').modal('close');
+					}, 1000);
+
+					return false
+
+				}
+
+				//获取公钥加密
+				let key = localStorage.getItem('publicKey');
+				let encrypt = new JSEncrypt();
+				encrypt.setPublicKey(key);
+
+				//签名操作
+				let noncestr = Math.random().toString(36).substr(2);
+				let timeStamp = localStorage.getItem("nowTime");
+				let personTime = localStorage.getItem("personTime");
+				let nowTime = new Date().getTime();
+				//计算经历的时间
+				let timeOut = parseInt(nowTime) - parseInt(personTime);
+
+				//类似服务器时间
+				let NewtimeStamp = parseInt(timeStamp) + parseInt(timeOut);
+
+				let sign_host = 'http://www.saintenjoy.top';
+				let param = {
+					'timeStamp': NewtimeStamp,
+					'noncestr': noncestr,
+					'signHost': sign_host
+				};
+				//加密数据
+				let params = {
+					// userid: '10003',
+					toAddress: toAddress,
+					num: num,
+					psw: psw
+				}
+
+				var sign = function(param) {
+
+					var array = new Array();
+					for(var key in param) {
+						array.push(key);
+					}
+					array.sort();
+
+					// 拼接有序的参数名-值串
+					var paramArray = new Array();
+
+					for(var index in array) {
+						var key = array[index];
+						paramArray.push(key + '=' + param[key]);
+					}
+
+					var md5Source = paramArray.join("&");
+
+					return md5Source;
+				}
+
+				let Newsign = md5(sign(param)).toUpperCase();
+				//参与加密
+				let userMsg = sign(params);
+				let encryptKey = encrypt.encrypt(userMsg); //使用公钥加密，得到密文
+
+				$.ajax({
+					type: "post",
+					url: "/vtbWithDraw",
+					async: false,
+					data: {
+						timeStamp: NewtimeStamp,
+						noncestr: noncestr,
+						content: encryptKey,
+						sign: Newsign
+					},
+					success: function(data) {
+						// console.log(data)
+						if(data.res == 200) {
+
+							$('#my-alert').modal('close');
+
+							$("#am-modal-msg").html(data.resMsg);
+							$('#my-alert-tixian').modal();
+
+							setTimeout(function() {
+								$('#my-alert-tixian').modal('close');
+							}, 1000);
+
+						} else {
+							$('#my-alert').modal('close');
+							$("#am-modal-msg").html(data.resMsg);
+							$('#my-alert-tixian').modal();
+
+							setTimeout(function() {
+								$('#my-alert-tixian').modal('close');
+							}, 1000);
+
+						}
+					},
+					error: function(err) {
+						$('#my-alert').modal('close');
+						$("#am-modal-msg").html('服务器错误');
+						$('#my-alert-tixian').modal();
+
+						setTimeout(function() {
+							$('#my-alert-tixian').modal('close');
+						}, 1000);
+					}
+				});
+			}
+
+			function changeShiji(e) {
+				var num = parseFloat($(e).val());
+				var shijiNum = num - 0.5;
+				//计算实际到账数量				
+				$("#doc-vld-age-2-1").val(shijiNum);
+			}
+
+			function input(e) {
+				//监听长度，显示文字
+				var length = $(e).val().length;
+				var value;
+				var newLength;
+				if(length > 5) {
+					value = $(e).val().slice(0, 6);
+					$(e).val(value);
+				} else {
+					value = $(e).val();
+				}
+				newLength = value.length;
+
+				switch(newLength) {
+					case 0:
+						$("#password").focus();
+						$('.circleImg').css('display', "none");
+						break;
+					case 1:
+						$('.circleImg').css('display', "none");
+						$('.passItem:nth-child(-n+1) > .circleImg').css('display', 'block');
+						break;
+					case 2:
+						$('.circleImg').css('display', "none");
+						$('.passItem:nth-child(-n+2) > .circleImg').css('display', 'block');
+						break;
+					case 3:
+						$('.circleImg').css('display', "none");
+						$('.passItem:nth-child(-n+3) > .circleImg').css('display', 'block');
+						break;
+					case 4:
+						$('.circleImg').css('display', "none");
+						$('.passItem:nth-child(-n+4) > .circleImg').css('display', 'block');
+						break;
+					case 5:
+						$('.circleImg').css('display', "none");
+						$('.passItem:nth-child(-n+5) > .circleImg').css('display', 'block');
+						break;
+					case 6:
+						$('.circleImg').css('display', "none");
+						$('.passItem:nth-child(-n+6) > .circleImg').css('display', 'block');
+						break;
+				}
+			}
+		</script>
+	</body>
+
+</html>

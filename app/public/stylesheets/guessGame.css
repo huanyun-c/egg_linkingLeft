@@ -1,0 +1,424 @@
+@charset "utf-8";
+html,body{
+	height: 100%;
+}
+body {
+  background: #ffca00;
+}
+#wrap {
+  margin-top: -0.01333333rem;
+  background-image: url("../images/bigTurntableimage/bg.png");
+  background-position: top;
+  background-size: 100%;
+  height:32.01333333rem;
+}
+.time {
+  position: absolute;
+  left: 0.56666667rem;
+  top: 0.9rem;
+  width: 2.2rem;
+  line-height: 0.37333333rem;
+  font-size: 0.29333333rem;
+  color: #fff;
+  -o-transform: rotate(-30deg);
+  -ms-transform: rotate(-30deg);
+  -moz-transform: rotate(-30deg);
+  -webkit-transform: rotate(-30deg);
+  transform: rotate(-30deg);
+}
+/*星星*/
+.stars-box {
+  position: relative;
+  width: 100%;
+  height: 4.26666667rem;
+}
+.stars {
+  opacity: 1;
+  position: absolute;
+  left: 0.73333333rem;
+  top: -0.09333333rem;
+  width: 0.2rem;
+  height: 0.2rem;
+  background-color: #fff;
+  border-radius: 50%;
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+  -moz-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.stars:nth-child(2) {
+  left: 3.73333333rem;
+  top: 0.93333333rem;
+  width: 0.13333333rem;
+  height: 0.13333333rem;
+}
+.stars:nth-child(3) {
+  left: 6.4rem;
+  top: 0.16rem;
+  width: 0.13333333rem;
+  height: 0.13333333rem;
+}
+.stars:nth-child(4) {
+  left: 9.33333333rem;
+  top: 0.4rem;
+}
+.stars:nth-child(5) {
+  left: -0.09333333rem;
+  top: 2.66666667rem;
+}
+.stars:nth-child(6) {
+  left: 9.53333333rem;
+  top: 3.4rem;
+}
+.stars:nth-child(7) {
+  left: 0.6rem;
+  top: 4.13333333rem;
+  width: 0.08rem;
+  height: 0.08rem;
+}
+.stars:nth-child(odd) {
+  -o-animation: twinkle 1s linear infinite alternate;
+  -ms-animation: twinkle 1s linear infinite alternate;
+  -moz-animation: twinkle 1s linear infinite alternate;
+  -webkit-animation: twinkle 1s linear infinite alternate;
+  animation: twinkle 1s linear infinite alternate;
+}
+@keyframes twinkle {
+  100% {
+    opacity: 0;
+  }
+}
+.stars:nth-child(even) {
+  -o-animation: bigSmall 1s 1s linear infinite alternate;
+  -ms-animation: bigSmall 1s 1s linear infinite alternate;
+  -moz-animation: bigSmall 1s 1s linear infinite alternate;
+  -webkit-animation: bigSmall 1s 1s linear infinite alternate;
+  animation: bigSmall 1s 1s linear infinite alternate;
+}
+@keyframes bigSmall {
+  100% {
+    -o-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+}
+/*主体*/
+.main {
+  position: absolute;
+  left: 0;
+  top:4.26666667rem;
+  width: 100%;
+  height: 30rem;
+}
+.rule,
+.my {
+  position: absolute;
+  top: 0.4rem;
+  width: 1.6rem;
+  height: 0.6rem;
+  background: no-repeat center / contain;
+}
+.rule {
+  left: 2.26666667rem;
+  background-image: url("../images/bigTurntableimage/rule.png");
+}
+.my {
+  right: 2.26666667rem;
+  background-image: url("../images/bigTurntableimage/my.png");
+}
+/*游戏盒子*/
+.box {
+  position: absolute;
+  left: 0.4rem;
+  top: 1.25333333rem;
+  width: 9.2rem;
+  height: 8.02666667rem;
+  background-image: url("../images/bigTurntableimage/choujiang.png");
+}
+.coin {
+  position: absolute;
+  left: 0.4rem;
+  top: -0.53333333rem;
+  width: 1.50666667rem;
+  height: 1rem;
+  background-image: url("../images/bigTurntableimage/coin.png");
+  -o-animation: jump .5s linear infinite alternate;
+  -ms-animation: jump .5s linear infinite alternate;
+  -moz-animation: jump .5s linear infinite alternate;
+  -webkit-animation: jump .5s linear infinite alternate;
+  animation: jump .5s linear infinite alternate;
+}
+@keyframes jump {
+  100% {
+    top: -0.66666667rem;
+  }
+}
+.box h2 {
+  margin-top: 0.42666667rem;
+  text-align: center;
+  font-size: 0.4rem;
+  color: #fff;
+}
+#change {
+  color: #fde817;
+}
+/*小彩灯*/
+.light {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 6.93333333rem;
+}
+.light li {
+  position: relative;
+  width: 0.58666667rem;
+  height: 100%;
+}
+.light li p {
+  margin-bottom: 1.33333333rem;
+  width: 0.56rem;
+  height: 0.56rem;
+  background-image: url("../images/bigTurntableimage/dark.png");
+}
+.light li p.blin {
+  background-image: url("../images/bigTurntableimage/light.png");
+}
+/*游戏区域*/
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  margin: -2.73333333rem 0 0 -4rem;
+  width: 8rem;
+  height: 5.86666667rem;
+}
+.play li {
+  position: relative;
+  float: left;
+  margin: 0.08rem 0 0 0.09rem;
+  width: 1.91rem;
+  height: 1.86666667rem;
+  background-image: url("../images/bigTurntableimage/normal.png");
+  background-size: 150%;
+}
+.play li:nth-child(5) {
+  left: 6rem;
+}
+
+.play li:nth-child(7) {
+  top: 1.94666667rem;   
+}
+.play li:nth-child(8) { 
+  left: 4rem;
+}
+
+.play li:nth-child(10) {
+  left: -4rem;
+}
+.play li:nth-child(11) {
+  top:-1.94666667rem;
+  left: -6rem;
+}
+
+.play li div {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+/*奖品图片大小*/
+.play li div p {
+  position: absolute;
+  left: 50%;
+  top:50%;
+  margin-top:-0.3rem;
+  margin-left: -0.98333333rem;
+  width: 100%;
+  height:0.6rem;
+  font-size: 0.49333333rem;
+  color: #c14600;
+}
+.p2 {
+	display: none;	
+	font-size:0.25rem !important;
+}
+.play li.select {
+  background-image: url("../images/bigTurntableimage/select.png");
+}
+.play li.select .p2 {
+	display: block;
+}
+.play li.select .p1 {
+	display: none;
+}
+/*开始按钮*/
+#btn {
+ background:none;
+ width:3.9rem;
+ height:1.86666667rem; 
+ text-align: center;
+ color:#fff;
+ font-size:0.4rem;
+}
+#btn p {
+	line-height: 0.93333335rem;
+}
+
+/*猜大小*/
+.bsBox {
+	width: 9.2rem;
+	margin-left: -4.6rem;
+	left:50%;
+	top: 9.5rem;
+	position: absolute;
+	display: flex;
+}
+.bs {
+	display: flex;
+	margin-top:0.4rem;
+}
+.bsLittleBox {
+	flex: 1;
+}
+.bsBtn{
+	width:1.5rem;
+	height:1.5rem;
+	background:#fff1cc;
+	color:#c14600;
+	line-height: 1.5rem;
+	text-align: center;
+	margin-left:0.2rem;
+	font-size:0.45rem;
+}
+/*奖品展示*/
+.awards {
+  top:12.5rem;
+  margin-left: -4.6rem;
+  width: 9.2rem;
+  height: 1.86666667rem;
+  line-height: 1.86666667rem;
+  text-align: center;
+  color:#fff;
+  font-size:0.5rem;
+  background-color: #fd851f;
+  box-shadow: 0 0.26666667rem 0.26666667rem rgba(248, 85, 40, 0.5) inset;
+  border-radius: 0.13333333rem;
+}
+.rules {
+  position: absolute;
+  top:21rem;
+  width: 90%;
+  left:50%;
+  margin-left:-45%;
+  line-height: 0.5rem;
+  text-align: left;
+  color:#fff;
+  font-size:0.25rem;
+}
+/*历史记录*/
+.history {
+	position: absolute;
+	top:14.666666667rem;
+  width: 90%;
+  left:50%;
+  margin-left:-45%;
+  color:#fff;
+  font-size:0.25rem;
+}
+/*规则弹窗背景色*/
+#mask-rule .box-rule {
+  background-color: #f7b50b;
+}
+#mask-rule .box-rule .star {
+  background-image: url("../../common/image/rule/star1.png");
+}
+.newWinning {
+	height:5.46666667rem !important;	
+	color:#fff !important;
+}
+.win-redhead {
+	background-image: none !important;
+	height:5.46666667rem !important;	
+	background: gold;
+	top:0 !important;
+	border-radius: 10px;
+}
+.win-redbody {
+	background-image: none !important;
+	background:gold;
+}
+.inputBtn{
+	border:0;
+	background: #fff;
+	color:#333;
+	outline: none;
+	width:0.8rem;
+	height:0.6rem;
+	line-height: 0.6rem;
+	font-size:0.373333rem;
+}
+.input {
+	width:1.5rem;
+	height:0.6rem;
+	line-height: 0.6rem;
+	border:0;
+	border:1px solid #fff;
+	padding-left:0.1rem;
+}
+.buyBtn {
+	width:80%;
+	margin:0 auto;
+	height:0.8rem;
+	line-height: 0.8rem;
+	text-align: center;
+	border:1px solid #fff;
+	border-radius: 0.4rem;
+	font-size:0.4rem;
+}
+.alertBox {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0);
+
+}
+.alert {
+	position: absolute;
+	top:50%;
+	left:50%;
+	margin-left:-30%;
+	margin-top:-0.75rem;
+	width:60%;
+	height:1.5rem;
+	line-height: 1.5rem;
+	background: rgba(0,0,0,0.5);
+	color:#fff;
+	z-index: 5000;
+	font-size:0.45rem;
+	text-align: center;
+	border-radius: 0.2rem;
+}
+.allAlert {
+	position: absolute;
+	width:100%;
+	height:13.3rem;
+	top:1.2rem;
+	background: rgba(0,0,0,0.5);
+	z-index:500;
+	color:#fff;
+	font-size:0.5rem;
+	text-align: center;
+	line-height: 2rem;
+	display: none;
+}
+

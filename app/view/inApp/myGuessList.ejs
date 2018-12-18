@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>  
+    <link rel="stylesheet" href="../../public/stylesheets/common.css">
+    <link rel="stylesheet" href="../../public/stylesheets/my.css">
+    <style type="text/css">
+    	tr,td {
+    		height:0.6rem;
+    		line-height: 0.6rem;
+    	}
+    </style>
+    <!-- 移动端适配 -->
+    <script>
+        var html = document.querySelector('html');
+        changeRem();
+        window.addEventListener('resize', changeRem);
+
+        function changeRem() {
+            var width = html.getBoundingClientRect().width;
+            //console.log( width );
+            html.style.fontSize = width / 10 + 'px';
+        }
+    </script>
+<body>
+<div id="wrap">
+    <header>
+        <div class="title clearfix">
+            客服热线：
+            <div class="clearfix">
+                <p>
+                    <i class="iconfont icon-qq"></i>
+                    0797-2131415
+                </p> 
+                <p style="color:#fff;"> 
+                	<i class="iconfont icon-qq"></i>
+                	√代表中奖
+                </p>
+            </div>
+       </div>        
+    </header>
+    <table style="width:100%;text-align: center;">
+    	
+        {% if lastGiftList.length == 0 %}
+        	<h5 style="text-align: center;">暂无记录</h5>
+        {% else %}	
+        <tr class="main">
+    		<th>期数</th>
+    		<th>号码</th>    		
+    		<th>数量</th>
+    		<th>时间</th>
+    		<th>中奖</th>
+        </tr>
+        {% for item in lastGiftList %}
+        
+        <tr>
+            <td>{{item.buyId}}</td>
+            {% if item.number == 13 %}
+			<td>小</td>
+			{% elseif item.number == 14 %}
+			<td>大</td>
+			{% elseif item.number == 11  %}
+			<td>单</td>
+			{% elseif item.number == 12 %}
+            <td>双</td>	
+            {% else %}
+            <td>{{item.number}}</td>	
+			{% endif %}	
+			
+            <td>{{item.count}}</td>
+            <td>{{item.time}}</td>
+            {% if item.number == item.lucklyNum %}
+            <td>√</td>
+            {% else %}
+            <td>-</td>
+            {% endif %}	
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+</div>
+
+<script src="../../public/javascripts/jquery.min.js"></script>
+</body>
+</html>
